@@ -14,5 +14,5 @@ import java.util.Collection;
 public interface CartClient1 {
     @DeleteMapping("/carts")
     void deleteCartItemByIds(@RequestParam("ids") Collection<Long> ids);
-
+    // 同事新增
 }
