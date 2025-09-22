@@ -80,6 +80,7 @@ public class ElasticTest {
         CreateIndexRequest request = new CreateIndexRequest("items");
         request.source(MAPPING_TEMPLATE, XContentType.JSON);
         client.indices().create(request, RequestOptions.DEFAULT);
+
     }
     @Test
     public void testGetIndex() throws IOException {

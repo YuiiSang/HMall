@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Collection;
 import java.util.List;
 
+
+/**
+ * 新增代码
+ * */
 @FeignClient("cart-service")
 public interface CartClient {
     @DeleteMapping("/carts")
     void deleteCartItemByIds(@RequestParam("ids") Collection<Long> ids);
+
 }

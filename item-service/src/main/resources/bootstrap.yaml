@@ -3,6 +3,17 @@ spring:
     name: item-service
   profiles:
     active: local
+  rabbitmq:
+    host: 47.108.161.167
+    port: 5672
+    virtual-host: /hmall
+    username: hmall
+    password: 1234
+    listener:
+      simple:
+        retry:
+          max-attempts: 3
+          multiplier: 1
   cloud:
     nacos:
       server-addr: 47.108.161.167:8848

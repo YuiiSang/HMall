@@ -24,6 +24,7 @@ import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.sort.SortOrder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -152,5 +153,21 @@ public class ElasticDocTest {
             String json = hit.getSourceAsString();
             System.out.println( json);
         }
+    }
+    @Test
+    public void testSortAndPage() throws IOException {
+        SearchRequest request = new SearchRequest("items");
+        request.source().query(QueryBuilders.matchAllQuery());
+        request.source().from(0).size(5);
+        request.source().sort("sold", SortOrder.DESC).sort("price",SortOrder.DESC);
+        SearchResponse search = client.search(request, RequestOptions.DEFAULT);
+        SearchHits hits = search.getHits();
+        long total = hits.getTotalHits().value;
+        SearchHit[] totalHits = hits.getHits();
+        for (SearchHit hit : totalHits) {
+            String json = hit.getSourceAsString();
+            System.out.println( json);
+        }
+        System.out.println(total);
     }
 }
