@@ -15,4 +15,6 @@ public interface CartClient1 {
     @DeleteMapping("/carts")
     void deleteCartItemByIds(@RequestParam("ids") Collection<Long> ids);
 
+
+    // 我新增代码1111
 }
