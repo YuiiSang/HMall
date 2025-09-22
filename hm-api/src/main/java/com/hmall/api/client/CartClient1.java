@@ -8,7 +8,7 @@ import java.util.Collection;
 
 
 /**
- * 新增代码
+ * 新增代码 修改代码222222222
  * */
 @FeignClient("cart-service")
 public interface CartClient1 {
